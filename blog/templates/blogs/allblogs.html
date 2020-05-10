@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Anshu Raj</title>
+    <title>Nick blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -64,7 +64,7 @@
           <li class="nav-item dropdown">
 
           </li>
-          <a class="nav-link" href="{% url 'allblogs' %}">Blogs</a>
+          <a class="nav-link active" href="{% url 'allblogs' %}">Blogs</a>
         </ul>
 
       </div>
@@ -72,37 +72,32 @@
 </header>
 
 <main role="main">
+  <div class="container">
+<h1 class='text-center pt-3'>Welcome to Anshu's Blog</h1>
+<br>
+<br>
+<hr>
+<h2>Latest Blogs</h2>
+<hr />
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Hey, Its me Anshu Raj!</h1>
-      <p class="lead text-muted">Hey its me Anshu Raj. I want to be a Web developer. Currently I am working at Tata Consultancy services as a support executive</p>
 
-        <a href="mailto:rajanshu365@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        <br>
-        <br>
-        <img src="{% static 'download (1).jpg' %}" alt="" height='300'>
-    </div>
-  </section>
+      {% for blog in blogs.all %}
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-<img class="card-img-top" src="{{job.image.url}}" alt="" height="200px" width='200px'>
-                <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
+      <a href='{% url 'detail' blog.id %}'><h3>{{blog.title}}</h3></a>
+      {{blog.pub_date_pretty}}
+      <br>
+      <img class='img-fluid' src="{{blog.image.url}}" alt="" height='200' width='200'>
+      <br>
+      <p>{{blog.summary}}</p>
 
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-          </div>
-        </div>
-      </div>
 
+      {% endfor %}
+
+
+
+
+
+</div>
 </main>
 
 <footer class="text-muted">
